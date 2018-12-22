@@ -1,3 +1,18 @@
+# UPD:
+
+To recreate gem-file you need change version in file:
+<br/>
+`./lib/jekyll_lunr_js_search/version.rb`
+<br/>
+then execute next command:
+<br/>
+`gem build jekyll-lunr-js-search.gemspec`
+<br/>
+After that you can install built gem:
+<br/>
+`gem install jekyll-lunr-js-search-3.3.0.execjs.vice.therubyracer.gem`
+<br/>
+
 # [Jekyll](http://jekyllrb.com/) + [lunr.js](http://lunrjs.com/) = Static websites with powerful full-text search using JavaScript
 
 Use [lunr.js](http://lunrjs.com/) to provide simple full-text search, using JavaScript in your browser, for your Jekyll static website.
