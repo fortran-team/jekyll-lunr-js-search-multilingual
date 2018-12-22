@@ -1,5 +1,5 @@
 bower_components
-*.gem
+# *.gem
 *.rbc
 Gemfile.lock
 .bundle
