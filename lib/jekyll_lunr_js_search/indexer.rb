@@ -55,10 +55,10 @@ module Jekyll
         index = []
 
         index_js = open(@lunr_path).read
-        index_js << 'var idx = lunr(function() {});'
-        index_js << 'idx.ref(\'id\');';
+        index_js << "\nvar idx = lunr(function() {\n"
+        index_js << "\tthis.ref('id');\n"
         @lunr_config['fields'].each_pair do |name, boost|
-            index_js << "idx.field('#{name}', {'boost': #{boost}});"
+            index_js << "\tthis.field('#{name}', {'boost': #{boost}});\n"
         end
 
         items.each_with_index do |item, i|
@@ -69,7 +69,7 @@ module Jekyll
 
           doc = {
             "id" => i,
-            "title" => entry.title,
+            "title" => getTitle(entry),
             "url" => entry.url,
             "date" => entry.date,
             "categories" => entry.categories,
@@ -78,12 +78,14 @@ module Jekyll
             "body" => entry.body
           }
 
-          index_js << 'idx.add(' << ::JSON.generate(doc, quirks_mode: true) << ');'
+          index_js << "\tthis.add(" << ::JSON.generate(doc, quirks_mode: true) << ");\n"
           doc.delete("body")
           @docs[i] = doc
 
           Jekyll.logger.debug "Lunr:", (entry.title ? "#{entry.title} (#{entry.url})" : entry.url)
         end
+
+        index_js << "});"
 
         FileUtils.mkdir_p(File.join(site.dest, @js_dir))
         filename = File.join(@js_dir, 'index.json')
@@ -118,6 +120,16 @@ module Jekyll
       end
 
       private
+
+      def getTitle(entry)
+          if entry.title
+              entry.title
+          # elsif entry.url == "/index.html"
+          #     "Main page"
+          else
+              entry.url
+          end
+      end
 
       # load the stopwords file
       def stopwords
