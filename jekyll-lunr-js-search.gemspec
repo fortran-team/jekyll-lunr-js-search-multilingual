@@ -3,15 +3,15 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'jekyll_lunr_js_search/version'
 
 Gem::Specification.new do |s|
-  s.name          = 'jekyll-lunr-js-search'
+  s.name          = 'jekyll-lunr-js-search-multilingual'
   s.version       = Jekyll::LunrJsSearch::VERSION
   s.licenses      = ['MIT']
   s.summary       = 'Jekyll + lunr.js = static websites with powerful full-text search using JavaScript'
   s.description   = 'Use lunr.js to provide simple full-text search, using JavaScript in your browser, for your Jekyll static website.'
-  s.authors       = ['Ben Smith']
-  s.email         = 'ben@10consulting.com'
+  s.authors       = ['Ben Smith', 'Professor Fortran']
+  s.email         = 'prof.fortran@hotmail.com'
   s.files         = Dir.glob("lib/**/*.rb") + Dir.glob("build/*.min.js")
-  s.homepage      = 'https://github.com/slashdotdash/jekyll-lunr-js-search'
+  s.homepage      = 'https://github.com/fortran-team/jekyll-lunr-js-search-multilingual'
   s.require_paths = ['lib']
 
   s.add_runtime_dependency 'nokogiri', '~> 1.7'
