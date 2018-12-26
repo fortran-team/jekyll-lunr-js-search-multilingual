@@ -15,7 +15,7 @@ end
 
 desc "Ensures all dependent JS libraries are installed and builds the gem."
 task :build_gem => :build do
-    system("gem build jekyll-lunr-js-search.gemspec")
+    system("gem build jekyll-lunr-js-search-multilingual.gemspec")
 end
 
 task :build => [

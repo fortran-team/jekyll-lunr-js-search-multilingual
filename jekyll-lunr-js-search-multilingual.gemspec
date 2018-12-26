@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.version       = Jekyll::LunrJsSearch::VERSION
   s.licenses      = ['MIT']
   s.summary       = 'Jekyll + lunr.js = static websites with powerful full-text search using JavaScript'
-  s.description   = 'Plugin "jekyll-lunr-js-search-multilingual" is "jekyll-lunr-js-search" plugin but with multilingual support and where "therubyracer" is replaced by "execjs" for Windows support'
+  s.description   = 'Plugin "jekyll-lunr-js-search-multilingual" is "jekyll-lunr-js-search" plugin but with multilingual support and where "therubyracer" is replaced by "execjs" for Windows support.<ol>Now supports:<li>English</li><li>Russian</li></ol>'
   s.authors       = ['Ben Smith', 'Professor Fortran']
   s.email         = 'prof.fortran@hotmail.com'
   s.files         = Dir.glob("lib/**/*.rb") + Dir.glob("build/*.min.js")
