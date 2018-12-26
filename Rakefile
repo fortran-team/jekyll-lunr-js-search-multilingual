@@ -13,7 +13,6 @@ end
 task :build => [
     :bower_update,
     :create_build_dir,
-    :copy_jekyll_plugin,
     :concat_js,
     :minify_js]
 
@@ -29,16 +28,6 @@ end
 
 task :create_build_dir do
     Dir.mkdir('build') unless Dir.exists?('build')
-end
-
-task :copy_jekyll_plugin do
-    lunr_version = File.read("bower_components/lunr.js-multilingual/VERSION").strip
-    open("build/jekyll_lunr_js_search.rb", "w") do |concat|
-        Dir.glob("lib/jekyll_lunr_js_search/*.rb") do |file|
-            ruby = File.read(file).sub(/LUNR_VERSION = .*$/, "LUNR_VERSION = \"#{lunr_version}\"")
-            concat.puts ruby
-        end
-    end
 end
 
 task :concat_js do
