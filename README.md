@@ -170,5 +170,10 @@ If you want to code and build the plugin, you need:
         `<repo_root>/lib/jekyll_lunr_js_search/version.rb`<br/>
     - build and create gem file:<br/>
         `rake build_gem`
+- Also you can create gem file and push it on 'https://rubygems.org':<br/>
+    - change version in file:<br/>
+        `<repo_root>/lib/jekyll_lunr_js_search/version.rb`<br/>
+    - build, create and push gem file:<br/>
+        `rake publish_gem`
 
 If you include the `.js` and `.js.map` files your browser developer console will link to the unminified code.
