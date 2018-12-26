@@ -1,3 +1,6 @@
+lib = File.expand_path('../lib', __FILE__)
+$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+require 'jekyll_lunr_js_search/version'
 require 'rake'
 require 'uglifier'
 require 'fileutils'
@@ -5,9 +8,14 @@ require 'os'
 
 task :default => :build
 
+task :publish_gem => :build_gem do
+    version = Jekyll::LunrJsSearch::VERSION.strip
+    system("gem push jekyll-lunr-js-search-multilingual-#{version}.gem")
+end
+
 desc "Ensures all dependent JS libraries are installed and builds the gem."
 task :build_gem => :build do
-    exec("gem build jekyll-lunr-js-search.gemspec")
+    system("gem build jekyll-lunr-js-search.gemspec")
 end
 
 task :build => [
