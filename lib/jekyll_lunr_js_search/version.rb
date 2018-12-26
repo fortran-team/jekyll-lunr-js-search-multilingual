@@ -1,5 +1,5 @@
 module Jekyll
   module LunrJsSearch
-    VERSION = "3.3.0.execjs.vice.therubyracer"
+    VERSION = "0.0.1"
   end
 end
