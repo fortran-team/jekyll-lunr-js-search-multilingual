@@ -1,6 +1,7 @@
 require 'rake'
 require 'uglifier'
 require 'fileutils'
+require 'os'
 
 task :default => :build
 
@@ -17,7 +18,13 @@ task :build => [
     :minify_js]
 
 task :bower_update do
-    abort "Please ensure bower is installed: npm install -g bower" unless system('bower install')
+    dev_null = OS.windows? ? 'NUL' : '/dev/null'
+    if system('bower --version > ' + dev_null)
+        system('rm -rf bower_components')
+        system('bower install')
+    else
+        abort "Please ensure bower is installed: npm install -g bower"
+    end
 end
 
 task :create_build_dir do
